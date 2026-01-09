@@ -1,0 +1,229 @@
+/* ======================================================
+   GOOGLE FONTS (MUST BE FIRST)
+====================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ======================================================
+   TAILWIND DIRECTIVES
+====================================================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ======================================================
+   BASE THEME VARIABLES
+====================================================== */
+@layer base {
+  :root {
+    /* Dark luxury theme */
+    --background: 220 15% 8%;
+    --foreground: 40 20% 95%;
+
+    --card: 220 15% 12%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 220 15% 12%;
+    --popover-foreground: 40 20% 95%;
+
+    /* Gold accent */
+    --primary: 38 80% 50%;
+    --primary-foreground: 220 15% 8%;
+
+    --secondary: 220 12% 18%;
+    --secondary-foreground: 40 20% 95%;
+
+    --muted: 220 12% 20%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 38 70% 45%;
+    --accent-foreground: 220 15% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 12% 20%;
+    --input: 220 12% 20%;
+    --ring: 38 80% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --gold: 38 80% 50%;
+    --gold-light: 40 85% 60%;
+    --gold-dark: 36 75% 40%;
+    --cream: 40 30% 90%;
+    --dark-green: 160 20% 15%;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(
+      135deg,
+      hsl(38 80% 50%),
+      hsl(40 85% 60%)
+    );
+    --gradient-dark: linear-gradient(
+      180deg,
+      hsl(220 15% 8%),
+      hsl(220 15% 4%)
+    );
+    --gradient-overlay: linear-gradient(
+      180deg,
+      hsla(220 15% 8% / 0.3) 0%,
+      hsla(220 15% 8% / 0.8) 100%
+    );
+
+    /* Shadows */
+    --shadow-gold: 0 4px 30px hsla(38 80% 50% / 0.2);
+    --shadow-elegant: 0 20px 60px hsla(0 0% 0% / 0.4);
+
+    /* Sidebar */
+    --sidebar-background: 220 15% 10%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 38 80% 50%;
+    --sidebar-primary-foreground: 220 15% 8%;
+    --sidebar-accent: 220 12% 18%;
+    --sidebar-accent-foreground: 40 20% 95%;
+    --sidebar-border: 220 12% 20%;
+    --sidebar-ring: 38 80% 50%;
+  }
+
+  .dark {
+    --background: 220 15% 8%;
+    --foreground: 40 20% 95%;
+  }
+}
+
+/* ======================================================
+   GLOBAL BASE STYLES
+====================================================== */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* ======================================================
+   COMPONENTS
+====================================================== */
+@layer components {
+  .section-title {
+    @apply text-sm uppercase tracking-widest text-primary font-medium mb-2;
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight;
+  }
+
+  .gold-underline {
+    @apply relative inline-block;
+  }
+
+  .gold-underline::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-full h-0.5 bg-primary;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl;
+  }
+
+  .btn-gold {
+    @apply bg-primary text-primary-foreground font-semibold px-8 py-3 rounded-full
+           transition-all duration-300 hover:bg-[hsl(40_85%_60%)]
+           hover:shadow-[0_4px_30px_hsla(38_80%_50%_/_0.4)]
+           active:scale-95;
+  }
+
+  .btn-outline-gold {
+    @apply border-2 border-primary text-primary font-semibold px-8 py-3 rounded-full
+           transition-all duration-300 hover:bg-primary hover:text-primary-foreground;
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-border/50 rounded-2xl;
+  }
+
+  .input-elegant {
+    @apply bg-secondary border border-border rounded-lg px-4 py-3
+           text-foreground placeholder:text-muted-foreground
+           focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary
+           transition-all duration-300;
+  }
+
+  .stat-number {
+    @apply text-5xl md:text-6xl font-bold text-foreground;
+  }
+
+  .stat-label {
+    @apply text-muted-foreground text-sm mt-2;
+  }
+}
+
+/* ======================================================
+   UTILITIES & ANIMATIONS
+====================================================== */
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r
+           from-primary to-[hsl(40_85%_60%)];
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    background-size: 200% 100%;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
