@@ -2,12 +2,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useState } from "react";
 
-import beachWedding from "@/assets/beach-wedding.jpg";
-import corporateEvent from "@/assets/corporate-event.jpg";
-import destinationWedding from "@/assets/destination-wedding.jpg";
-import musicEntertainment from "@/assets/music-entertainment.jpg";
-import privateParty from "@/assets/private-party.jpg";
-import weddingCouple from "@/assets/wedding-couple.jpg";
+import corporateEvent from "@/assets/img1.jpg";
+import CouplImage from "@/assets/img10.jpg";
+import privateParty from "@/assets/img12.jpg";
+import { default as beachWedding, default as destinationWedding } from "@/assets/img13.jpg";
+import musicEntertainment from "@/assets/img4.jpg";
+import weddingCouple from "@/assets/img9.jpg";
 
 const images = [
   { src: weddingCouple, alt: "Luxury Wedding Celebration" },
@@ -16,6 +16,7 @@ const images = [
   { src: musicEntertainment, alt: "Music & Entertainment Night" },
   { src: privateParty, alt: "Private Party Celebration" },
   { src: corporateEvent, alt: "Corporate Event Experience" },
+  { src: CouplImage, alt: "Romantic Couple Moments" },
 ];
 
 const Gallery = () => {

@@ -1,33 +1,33 @@
 import { motion } from "framer-motion";
 import { MapPin, Star } from "lucide-react";
 
-import venue1 from "@/assets/venue-1.jpg";
-import venue2 from "@/assets/venue-2.jpg";
-import venue3 from "@/assets/venue-3.jpg";
-import venue4 from "@/assets/venue-4.jpg";
+import venue1 from "@/assets/img1.jpg";
+import venue2 from "@/assets/img2.jpg";
+import venue3 from "@/assets/img3.jpg";
+import venue4 from "@/assets/img4.jpg";
 
 const venues = [
   {
     name: "Brookside Garden Resort",
-    location: "Palakkad, Kerala",
+    location: "kolkata, West Bengal",
     rating: 4.8,
     image: venue1,
   },
   {
     name: "Vembanad Lake Resort",
-    location: "Alappuzha, Kerala",
+    location: "west Bengal",
     rating: 4.6,
     image: venue2,
   },
   {
     name: "Heritage Manor",
-    location: "Kottayam, Kerala",
+    location: "Darjeeling, West Bengal",
     rating: 4.9,
     image: venue3,
   },
   {
     name: "Coastal Paradise Resort",
-    location: "Kovalam, Kerala",
+    location: "Noth24, West Bengal",
     rating: 5.0,
     image: venue4,
   },

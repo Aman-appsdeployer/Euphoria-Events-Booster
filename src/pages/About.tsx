@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 
 
 /* ================= IMAGES ================= */
-import about1 from "@/assets/venue-1.jpg";
-import about2 from "@/assets/venue-2.jpg";
-import about3 from "@/assets/venue-3.jpg";
-import { default as about4, default as heroImage } from "@/assets/venue-4.jpg";
+import { default as about4, default as heroImage } from "@/assets/img1.jpg";
+import about1 from "@/assets/img13.jpg";
+import about2 from "@/assets/img5.jpg";
+import about3 from "@/assets/img8.jpg";
 
 /* ================= DATA ================= */
 const features = [

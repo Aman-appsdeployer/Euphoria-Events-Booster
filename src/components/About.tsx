@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { Award, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
-import about1 from "@/assets/venue-1.jpg";
-import about2 from "@/assets/venue-2.jpg";
-import about3 from "@/assets/venue-3.jpg";
-import about4 from "@/assets/venue-4.jpg";
+import about1 from "@/assets/img3.jpg";
+import about4 from "@/assets/img7.jpg";
+import about2 from "@/assets/img8.jpg";
+import about3 from "@/assets/img9.jpg";
 
 const features = [
   "Luxury Wedding & Event Specialists",
@@ -64,7 +64,7 @@ const About = () => {
             </div>
 
             {/* Experience Badge */}
-            <motion.div
+            {/* <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
@@ -82,7 +82,7 @@ const About = () => {
                   Euphoria Events Booster
                 </p>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           {/* ================= CONTENT ================= */}

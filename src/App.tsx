@@ -5,8 +5,7 @@ import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Gallery from "@/pages/Gallery";
 import Index from "@/pages/Index";
-import NotFound from "@/pages/NotFound";
-
+import Service from "@/pages/Service";
 const App = () => {
   return (
     <BrowserRouter>
@@ -17,10 +16,10 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/services" element={<Service />} />
         </Route>
 
-        {/* 404 */}
-        <Route path="*" element={<NotFound />} />
+        
       </Routes>
     </BrowserRouter>
   );

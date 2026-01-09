@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Award, ShieldCheck, Sparkles, Star } from "lucide-react";
 
-import beachWedding from "@/assets/venue-4.jpg";
+import beachWedding from "@/assets/img2.jpg";
 
 const awards = [
   {

@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-import beachWedding from "@/assets/beach-wedding.jpg";
-import corporateEvent from "@/assets/corporate-event.jpg";
-import destinationWedding from "@/assets/destination-wedding.jpg";
-import musicEntertainment from "@/assets/music-entertainment.jpg";
-import privateParty from "@/assets/private-party.jpg";
-import weddingCouple from "@/assets/wedding-couple.jpg";
+import privateParty from "@/assets/img10.jpg";
+import weddingCouple from "@/assets/img11.jpg";
+import musicEntertainment from "@/assets/img13.jpg";
+import beachWedding from "@/assets/img3.jpg";
+import corporateEvent from "@/assets/img5.jpg";
+import destinationWedding from "@/assets/img6.jpg";
 
 const services = [
   {

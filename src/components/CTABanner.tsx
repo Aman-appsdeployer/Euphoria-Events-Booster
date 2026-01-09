@@ -1,4 +1,4 @@
-import destinationWedding from "@/assets/destination-wedding.jpg";
+import destinationWedding from "@/assets/img2.jpg";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 

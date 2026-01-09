@@ -1,6 +1,5 @@
-import heroImage from "@/assets/hero-wedding.jpg";
+import heroImage from "@/assets/img2.jpg";
 import { motion } from "framer-motion";
-import { Phone, Star } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -75,7 +74,7 @@ const Hero = () => {
 
             {/* Rating */}
             <div className="flex items-center gap-3">
-              <div className="flex -space-x-2">
+              {/* <div className="flex -space-x-2">
                 {[1, 2, 3].map((i) => (
                   <div
                     key={i}
@@ -85,26 +84,26 @@ const Hero = () => {
                     <div className="w-full h-full bg-gradient-to-br from-primary/60 to-primary/20" />
                   </div>
                 ))}
-              </div>
+              </div> */}
 
               <div>
-                <div className="flex text-primary">
+                {/* <div className="flex text-primary">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
                       className="w-4 h-4 fill-current"
                     />
                   ))}
-                </div>
-                <span className="text-sm text-foreground">
+                </div> */}
+                {/* <span className="text-sm text-foreground">
                   4.9/5 Client Satisfaction
-                </span>
+                </span> */}
               </div>
             </div>
           </motion.div>
 
           {/* Phone CTA */}
-          <motion.a
+          {/* <motion.a
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.65 }}
@@ -117,7 +116,7 @@ const Hero = () => {
             <span className="font-medium">
               Call Us for Instant Consultation
             </span>
-          </motion.a>
+          </motion.a> */}
         </div>
       </div>
 
