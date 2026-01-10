@@ -11,6 +11,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
+
 import Marquee from "react-fast-marquee";
 
 /* ================= IMAGES ================= */
@@ -125,76 +126,82 @@ const Services = () => {
   return (
     <main className="overflow-hidden">
 
-      {/* ================= HERO ================= */}
-      <section className="relative min-h-[85vh] flex items-center text-center overflow-hidden">
-  {/* ================= BACKGROUND IMAGE ================= */}
-  <div className="absolute inset-0">
+  <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+  <div className="absolute inset-0 z-0">
     <img
-      src={corporateEvent} // or a services-collage image
+      src={corporateEvent}
       alt="Professional Event Planning Services"
       className="w-full h-full object-cover"
     />
-    <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/70 to-background/90" />
+    <div
+      className="absolute inset-0 bg-gradient-to-r 
+                 from-background/95 via-background/75 to-background/40"
+    />
   </div>
 
   {/* ================= CONTENT ================= */}
-  <div className="relative z-10 container mx-auto px-4 max-w-4xl">
-    <motion.p
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="section-title mb-4"
-    >
-      Our Services
-    </motion.p>
+  <div className="relative z-10 container mx-auto px-4 pt-24">
+    <div className="max-w-3xl">
 
-    <motion.h1
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.15 }}
-      className="text-4xl md:text-6xl xl:text-7xl font-serif font-bold mb-6 leading-tight"
-    >
-      Exceptional Event{" "}
-      <span className="text-gradient-gold">
-        Planning Experiences
-      </span>
-    </motion.h1>
-
-    <motion.p
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3 }}
-      className="text-muted-foreground max-w-2xl mx-auto mb-10 text-lg"
-    >
-      From luxury weddings and destination celebrations to corporate
-      events and private parties, we deliver seamless planning,
-      creative design, and flawless execution — every time.
-    </motion.p>
-
-    {/* ================= CTA ================= */}
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.45 }}
-      className="flex flex-wrap justify-center gap-4"
-    >
-      <a href="#services" className="btn-gold">
-        Explore Our Services
-      </a>
-
-      <a
-        href="/contact"
-        className="btn-outline-gold"
+      {/* Subtitle */}
+      <motion.p
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        className="section-title mb-4"
       >
-        Get a Custom Quote
-      </a>
-    </motion.div>
+        Our Services
+      </motion.p>
+
+      {/* Heading */}
+      <motion.h1
+        initial={{ opacity: 0, x: -60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 0.15 }}
+        className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
+                   font-serif font-bold leading-tight mb-6"
+      >
+        Exceptional Event{" "}
+        <span className="text-gradient-gold">
+          Planning Experiences
+        </span>
+      </motion.h1>
+
+      {/* Description */}
+      <motion.p
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+        className="text-muted-foreground max-w-xl mb-10 text-lg leading-relaxed"
+      >
+        From luxury weddings and destination celebrations to corporate
+        events and private gatherings, we create seamless experiences
+        through thoughtful planning, creative design, and flawless execution.
+      </motion.p>
+
+      {/* CTA */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 0.45 }}
+        className="flex flex-wrap items-center gap-5"
+      >
+        <a href="#services" className="btn-gold">
+          Explore Our Services
+        </a>
+
+        <a href="/contact" className="btn-outline-gold">
+          Get a Custom Quote
+        </a>
+      </motion.div>
+    </div>
   </div>
 
   {/* ================= SCROLL INDICATOR ================= */}
   <motion.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
-    transition={{ delay: 0.9 }}
+    transition={{ delay: 1 }}
     className="absolute bottom-8 left-1/2 -translate-x-1/2"
   >
     <div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center pt-2">
@@ -207,8 +214,8 @@ const Services = () => {
   </motion.div>
 </section>
 
-
       {/* ================= HIGHLIGHTS ================= */}
+
      <section className="py-28 bg-background relative overflow-hidden">
   {/* Soft background accent */}
   <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
@@ -262,9 +269,7 @@ const Services = () => {
 
   </div>
 </section>
-
-
-      {/* ================= SERVICES GRID ================= */}
+{/* ================= SERVICES GRID ================= */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {services.map((service, index) => (
