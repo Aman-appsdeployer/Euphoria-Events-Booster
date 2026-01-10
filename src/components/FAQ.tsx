@@ -8,14 +8,14 @@ import { motion } from "framer-motion";
 
 const faqs = [
   {
-    question: "How much does event management cost in Kerala?",
+    question: "How much does event management cost in India?",
     answer:
       "The cost of event management depends on the type, scale, and level of customization required. Prices typically vary based on décor, venue, guest count, and services involved. Contact us to discuss your vision, and we’ll provide a personalised quotation tailored to your needs.",
   },
   {
     question: "What services does Euphoria Events Booster provide?",
     answer:
-      "We offer end-to-end event management services including wedding planning, destination weddings, corporate events, private celebrations, venue coordination, décor & styling, entertainment, photography, and complete event execution across Kerala and beyond.",
+      "We offer end-to-end event management services including wedding planning, destination weddings, corporate events, private celebrations, venue coordination, décor & styling, entertainment, photography, and complete event execution across India and beyond.",
   },
   {
     question: "Do you plan events for different budgets?",
@@ -28,7 +28,7 @@ const faqs = [
       "We recommend booking your event planner as soon as your date and venue are decided. Ideally, reaching out 4–6 months in advance helps ensure better planning, availability, and stress-free execution—especially during peak wedding seasons.",
   },
   {
-    question: "How much does a destination wedding in Kerala cost?",
+    question: "How much does a destination wedding in Kolkata cost?",
     answer:
       "Destination wedding costs vary based on location, guest count, décor, accommodation, and services selected. Our team works closely with you to design a destination wedding experience that matches your vision and budget expectations.",
   },

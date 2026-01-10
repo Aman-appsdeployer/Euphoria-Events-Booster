@@ -11,7 +11,7 @@ import weddingCouple from "@/assets/img9.jpg";
 
 const images = [
   { src: weddingCouple, alt: "Luxury Wedding Celebration" },
-  { src: destinationWedding, alt: "Destination Wedding in Kerala" },
+  { src: destinationWedding, alt: "Destination Wedding in Kolkata" },
   { src: beachWedding, alt: "Elegant Beach Wedding" },
   { src: musicEntertainment, alt: "Music & Entertainment Night" },
   { src: privateParty, alt: "Private Party Celebration" },

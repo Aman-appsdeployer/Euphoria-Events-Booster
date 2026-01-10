@@ -8,7 +8,7 @@ const awards = [
     icon: Award,
     title: "Recognized Event Specialists",
     description:
-      "Trusted for delivering premium weddings and memorable events across Kerala.",
+      "Trusted for delivering premium weddings and memorable events across India.",
   },
   {
     icon: Sparkles,

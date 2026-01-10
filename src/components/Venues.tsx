@@ -53,7 +53,7 @@ const Venues = () => {
           </h2>
 
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Discover breathtaking wedding venues across Kerala — from serene
+            Discover breathtaking wedding venues across India — from serene
             backwaters to luxury beach resorts — curated for unforgettable
             celebrations.
           </p>

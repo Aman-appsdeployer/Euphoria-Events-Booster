@@ -57,7 +57,7 @@ const Hero = () => {
             className="text-muted-foreground max-w-xl mb-10 leading-relaxed"
           >
             Euphoria Events Booster specializes in luxury weddings, destination
-            celebrations, and bespoke events across Kerala and beyond. Every
+            celebrations, and bespoke events across India and beyond. Every
             detail is curated with elegance, creativity, and perfection.
           </motion.p>
 

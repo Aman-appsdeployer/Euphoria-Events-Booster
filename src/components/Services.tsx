@@ -68,7 +68,7 @@ const Services = () => {
 
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
             We specialize in luxury weddings, destination celebrations, and
-            premium events across Kerala and beyond — crafted with creativity,
+            premium events across India and beyond — crafted with creativity,
             elegance, and flawless execution.
           </p>
         </motion.div>

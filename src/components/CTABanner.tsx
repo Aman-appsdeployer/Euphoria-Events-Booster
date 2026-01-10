@@ -47,7 +47,7 @@ const CTABanner = () => {
             className="text-muted-foreground mb-10 leading-relaxed"
           >
             Euphoria Events Booster specializes in luxury destination weddings
-            across Kerala, beaches, backwaters, and exclusive resorts. From
+            across India, beaches, backwaters, and exclusive resorts. From
             planning to execution, we curate unforgettable celebrations infused
             with elegance, tradition, and perfection.
           </motion.p>
