@@ -11,13 +11,14 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
+import Marquee from "react-fast-marquee";
 
 /* ================= IMAGES ================= */
 import privateParty from "@/assets/img10.jpg";
 import weddingCouple from "@/assets/img11.jpg";
+import corporateEvent from "@/assets/img12.jpg";
 import destinationWedding from "@/assets/img5.jpg";
 import beachWedding from "@/assets/img6.jpg";
-import corporateEvent from "@/assets/img8.jpg";
 import musicEntertainment from "@/assets/img9.jpg";
 
 /* ================= SERVICES DATA ================= */
@@ -90,69 +91,178 @@ const highlights = [
   },
 ];
 
+/* ================= CLIENTS DATA ================= */
+const clients = [
+  {
+    name: "Taj Hotels",
+    logo: "/logos/taj-hotels.svg",
+  },
+  {
+    name: "ITC Hotels",
+    logo: "/logos/itc.svg",
+  },
+  {
+    name: "Google",
+    logo: "/logos/google.svg",
+  },
+  {
+    name: "Infosys",
+    logo: "/logos/infosys.svg",
+  },
+  {
+    name: "Wedding Client",
+    logo: "/logos/wedding-client-1.png",
+  },
+  {
+    name: "Destination Venue",
+    logo: "/logos/wedding-client-2.png",
+  },
+];
+
+
 /* ================= PAGE ================= */
 const Services = () => {
   return (
     <main className="overflow-hidden">
 
       {/* ================= HERO ================= */}
-      <section className="relative py-32 bg-secondary/30 text-center">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="section-title mb-4"
-          >
-            Our Services
-          </motion.p>
+      <section className="relative min-h-[85vh] flex items-center text-center overflow-hidden">
+  {/* ================= BACKGROUND IMAGE ================= */}
+  <div className="absolute inset-0">
+    <img
+      src={corporateEvent} // or a services-collage image
+      alt="Professional Event Planning Services"
+      className="w-full h-full object-cover"
+    />
+    <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/70 to-background/90" />
+  </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 }}
-            className="section-heading mb-6"
-          >
-            Exceptional Event{" "}
-            <span className="text-gradient-gold">Planning Services</span>
-          </motion.h1>
+  {/* ================= CONTENT ================= */}
+  <div className="relative z-10 container mx-auto px-4 max-w-4xl">
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="section-title mb-4"
+    >
+      Our Services
+    </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-muted-foreground"
-          >
-            From luxury weddings to corporate events and private celebrations,
-            we deliver experiences crafted with elegance, creativity, and precision.
-          </motion.p>
-        </div>
-      </section>
+    <motion.h1
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.15 }}
+      className="text-4xl md:text-6xl xl:text-7xl font-serif font-bold mb-6 leading-tight"
+    >
+      Exceptional Event{" "}
+      <span className="text-gradient-gold">
+        Planning Experiences
+      </span>
+    </motion.h1>
+
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3 }}
+      className="text-muted-foreground max-w-2xl mx-auto mb-10 text-lg"
+    >
+      From luxury weddings and destination celebrations to corporate
+      events and private parties, we deliver seamless planning,
+      creative design, and flawless execution — every time.
+    </motion.p>
+
+    {/* ================= CTA ================= */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.45 }}
+      className="flex flex-wrap justify-center gap-4"
+    >
+      <a href="#services" className="btn-gold">
+        Explore Our Services
+      </a>
+
+      <a
+        href="/contact"
+        className="btn-outline-gold"
+      >
+        Get a Custom Quote
+      </a>
+    </motion.div>
+  </div>
+
+  {/* ================= SCROLL INDICATOR ================= */}
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.9 }}
+    className="absolute bottom-8 left-1/2 -translate-x-1/2"
+  >
+    <div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center pt-2">
+      <motion.div
+        animate={{ y: [0, 12, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+        className="w-1.5 h-1.5 bg-primary rounded-full"
+      />
+    </div>
+  </motion.div>
+</section>
+
 
       {/* ================= HIGHLIGHTS ================= */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {highlights.map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="glass-card p-8 text-center"
-              >
-                <item.icon className="w-10 h-10 text-primary mx-auto mb-4" />
-                <h3 className="font-semibold text-lg mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
+     <section className="py-28 bg-background relative overflow-hidden">
+  {/* Soft background accent */}
+  <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
+
+  <div className="container mx-auto px-4 relative">
+
+    {/* ================= HEADER ================= */}
+    <div className="text-center max-w-2xl mx-auto mb-20">
+      <p className="section-title">Why Our Services Stand Out</p>
+      <h2 className="section-heading">
+        What Makes Us{" "}
+        <span className="text-gradient-gold">Different</span>
+      </h2>
+      <p className="text-muted-foreground mt-4">
+        A perfect blend of creativity, professionalism, and flawless execution —
+        ensuring every event is truly unforgettable.
+      </p>
+    </div>
+
+    {/* ================= HIGHLIGHTS GRID ================= */}
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      {highlights.map((item, i) => (
+        <motion.div
+          key={item.title}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: i * 0.1 }}
+          className="glass-card p-10 text-center 
+                     hover:shadow-2xl hover:-translate-y-1 
+                     transition-all duration-300"
+        >
+          {/* Icon */}
+          <div className="w-14 h-14 rounded-full bg-primary/10 
+                          flex items-center justify-center mx-auto mb-6">
+            <item.icon className="w-7 h-7 text-primary" />
           </div>
-        </div>
-      </section>
+
+          {/* Title */}
+          <h3 className="font-semibold text-xl mb-3">
+            {item.title}
+          </h3>
+
+          {/* Description */}
+          <p className="text-muted-foreground leading-relaxed text-sm">
+            {item.desc}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
 
       {/* ================= SERVICES GRID ================= */}
       <section className="py-24 bg-background">
@@ -207,57 +317,246 @@ const Services = () => {
       </section>
 
       {/* ================= PROCESS ================= */}
-      <section className="py-24 bg-secondary/30">
-        <div className="container mx-auto px-4 max-w-5xl text-center">
-          <p className="section-title">How We Work</p>
+      <section className="py-28 bg-secondary/30 relative overflow-hidden">
+  {/* Subtle background texture */}
+  <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
 
-          <h2 className="section-heading mb-14">
-            Our Event Planning{" "}
-            <span className="text-gradient-gold">Process</span>
-          </h2>
+  <div className="container mx-auto px-4 max-w-6xl relative">
+    
+    {/* ================= HEADER ================= */}
+    <div className="text-center max-w-2xl mx-auto mb-20">
+      <p className="section-title">How We Work</p>
 
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              "Consultation & Understanding",
-              "Concept & Design",
-              "Planning & Coordination",
-              "Flawless Execution",
-            ].map((step, i) => (
-              <motion.div
-                key={step}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="glass-card p-8"
-              >
-                <span className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 font-bold">
-                  {i + 1}
-                </span>
-                <p className="font-medium">{step}</p>
-              </motion.div>
-            ))}
+      <h2 className="section-heading">
+        Our Event Planning{" "}
+        <span className="text-gradient-gold">Process</span>
+      </h2>
+
+      <p className="text-muted-foreground mt-4">
+        A carefully crafted approach that ensures clarity, creativity,
+        and flawless execution at every stage of your event.
+      </p>
+    </div>
+
+    {/* ================= PROCESS STEPS ================= */}
+    <div className="grid md:grid-cols-4 gap-10">
+      {[
+        {
+          title: "Consultation & Understanding",
+          desc: "We begin by understanding your vision, preferences, and expectations in detail.",
+        },
+        {
+          title: "Concept & Design",
+          desc: "Our creative team develops themes, layouts, and design concepts tailored to you.",
+        },
+        {
+          title: "Planning & Coordination",
+          desc: "We manage vendors, timelines, logistics, and budgets with precision.",
+        },
+        {
+          title: "Flawless Execution",
+          desc: "On the event day, we handle every detail while you enjoy stress-free moments.",
+        },
+      ].map((step, i) => (
+        <motion.div
+          key={step.title}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: i * 0.1 }}
+          className="glass-card p-10 text-center 
+                     hover:-translate-y-1 hover:shadow-2xl 
+                     transition-all duration-300"
+        >
+          {/* Step Number */}
+          <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground 
+                          flex items-center justify-center mx-auto mb-6 
+                          font-bold text-lg">
+            {i + 1}
           </div>
-        </div>
-      </section>
+
+          {/* Title */}
+          <h3 className="font-semibold text-xl mb-4">
+            {step.title}
+          </h3>
+
+          {/* Description */}
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            {step.desc}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
 
       {/* ================= CTA ================= */}
-      <section className="py-28 bg-background text-center">
-        <h2 className="section-heading mb-6">
-          Ready to Plan Your{" "}
-          <span className="text-gradient-gold">Next Event?</span>
-        </h2>
+      <section className="relative py-32 bg-background text-center overflow-hidden">
+  {/* Soft background accent */}
+  <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none" />
 
-        <p className="text-muted-foreground mb-10 max-w-xl mx-auto">
-          Let our experienced team handle every detail while you enjoy
-          a seamless and unforgettable celebration.
-        </p>
+  <div className="container mx-auto px-4 relative max-w-3xl">
+    <motion.h2
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="section-heading mb-6"
+    >
+      Ready to Create an{" "}
+      <span className="text-gradient-gold">
+        Unforgettable Event?
+      </span>
+    </motion.h2>
 
-        <a href="/contact" className="btn-gold">
-          Contact Us Today
-        </a>
-      </section>
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.1 }}
+      className="text-muted-foreground mb-12 max-w-xl mx-auto leading-relaxed"
+    >
+      From planning and coordination to flawless execution, our expert
+      team ensures every detail is handled seamlessly — so you can
+      focus on enjoying the moments that truly matter.
+    </motion.p>
 
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.2 }}
+      className="flex flex-wrap justify-center gap-4"
+    >
+      <a href="/contact" className="btn-gold">
+        Contact Us Today
+      </a>
+
+      <a
+        href="https://wa.me/91XXXXXXXXXX"
+        className="btn-outline-gold"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp Us
+      </a>
+    </motion.div>
+  </div>
+</section>
+{/* //================= WHO WE SERVE ================= // */}
+
+<section className="py-24 bg-secondary/30">
+  <div className="container mx-auto px-4 text-center">
+    <p className="section-title">Who We Serve</p>
+    <h2 className="section-heading mb-14">
+      Curated Experiences for{" "}
+      <span className="text-gradient-gold">Every Occasion</span>
+    </h2>
+
+    <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+      {[
+        {
+          title: "Luxury Weddings",
+          desc: "Bespoke celebrations crafted with elegance, emotion, and timeless detail."
+        },
+        {
+          title: "Corporate & Brand Events",
+          desc: "Strategic, high-impact events that strengthen brands and inspire audiences."
+        },
+        {
+          title: "Private Celebrations",
+          desc: "Intimate moments transformed into unforgettable memories."
+        },
+        {
+          title: "Destination Events",
+          desc: "Extraordinary experiences in breathtaking locations, flawlessly executed."
+        },
+      ].map((item, i) => (
+        <motion.div
+          key={item.title}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.1 }}
+          className="glass-card p-8 text-center hover:scale-105 transition-transform duration-300"
+        >
+          <h3 className="font-semibold text-lg mb-3">
+            {item.title}
+          </h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            {item.desc}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+      {/* ================= TRUSTED BY ================= */}
+<section className="py-20 bg-background overflow-hidden">
+  <div className="container mx-auto px-4 text-center">
+    <p className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
+      Trusted by Clients Across India
+    </p>
+
+    <h3 className="text-2xl md:text-3xl font-semibold mb-12">
+      Brands & Families Who Believe in Our Work
+    </h3>
+  </div>
+
+  {/* 🔼 TOP MARQUEE (Left ➝ Right) */}
+  <Marquee
+    speed={25}
+    gradient={false}
+    className="mb-10"
+  >
+    {clients.map((client, i) => (
+      <img
+        key={`top-${i}`}
+        src={client.logo}
+        alt={client.name}
+        className="h-8 mx-14 grayscale opacity-50"
+      />
+    ))}
+  </Marquee>
+
+  {/* 🔲 CENTER GRID (STATIC) */}
+  {/* <div className="container mx-auto px-4">
+    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-8 items-center">
+      {clients.map((client, i) => (
+        <div
+          key={`grid-${i}`}
+          className="h-16 flex items-center justify-center rounded-lg bg-secondary/40 hover:bg-secondary transition"
+        >
+          <img
+            src={client.logo}
+            alt={client.name}
+            className="max-h-8 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition duration-300"
+          />
+        </div>
+      ))}
+    </div>
+  </div> */}
+
+  {/* 🔽 BOTTOM MARQUEE (Right ➝ Left) */}
+  <Marquee
+    speed={25}
+    direction="right"
+    gradient={false}
+    className="mt-10"
+  >
+    {clients.map((client, i) => (
+      <img
+        key={`bottom-${i}`}
+        src={client.logo}
+        alt={client.name}
+        className="h-8 mx-14 grayscale opacity-50"
+      />
+    ))}
+  </Marquee>
+</section>
     </main>
   );
 };

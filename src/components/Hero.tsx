@@ -1,4 +1,4 @@
-import heroImage from "@/assets/img2.jpg";
+import heroImage from "@/assets/img1.jpg";
 import { motion } from "framer-motion";
 
 const Hero = () => {
