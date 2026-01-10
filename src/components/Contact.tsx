@@ -5,16 +5,16 @@ import { useState } from "react";
 
 const offices = [
   {
-    city: "Kochi",
-    address: "Kakkanad, Kochi, Kerala – 682037",
+    city: "Kolkata",
+    address: "West bengal, India – 682011",
   },
   {
-    city: "Thrissur",
-    address: "Kuriachira, Thrissur, Kerala – 680006",
+    city: "Mumbai",
+    address: "kolkata, India – 680001",
   },
   {
-    city: "Calicut",
-    address: "Kozhikode, Kerala – 673640",
+    city: "Hawrah",
+    address: "Hawrah, India – 673001",
   },
 ];
 

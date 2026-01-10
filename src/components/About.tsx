@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 
+import about4 from "@/assets/img2.jpg";
 import about1 from "@/assets/img3.jpg";
-import about4 from "@/assets/img7.jpg";
 import about2 from "@/assets/img8.jpg";
 import about3 from "@/assets/img9.jpg";
 
