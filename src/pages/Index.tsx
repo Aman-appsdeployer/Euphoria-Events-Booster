@@ -1,6 +1,5 @@
 import About from "@/components/About";
 import Awards from "@/components/Awards";
-import Contact from "@/components/Contact";
 import CTABanner from "@/components/CTABanner";
 import FAQ from "@/components/FAQ";
 import Gallery from "@/components/Gallery";
@@ -23,7 +22,7 @@ const Index = () => {
       <Venues />
       <Gallery />
       <FAQ />
-      <Contact />
+      {/* <Contact /> */}
     </main>
   );
 };
