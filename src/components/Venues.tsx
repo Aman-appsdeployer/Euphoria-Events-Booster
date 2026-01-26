@@ -129,7 +129,7 @@ const Venues = () => {
           viewport={{ once: true }}
           className="text-center mt-14"
         >
-          <a href="#contact" className="btn-gold">
+          <a href="/contact" className="btn-gold">
             Explore All Venues
           </a>
         </motion.div>

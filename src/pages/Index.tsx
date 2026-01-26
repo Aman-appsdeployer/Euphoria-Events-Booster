@@ -11,7 +11,7 @@ import Venues from "@/components/Venues";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background">
+    <main  className="overflow-x-hidden">
       <Hero />
       <Stats />
       <About />

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Award, ShieldCheck, Sparkles, Star } from "lucide-react";
 
-import beachWedding from "@/assets/img2.jpg";
+import beachWedding from "@/assets/img4.jpg";
 
 const awards = [
   {
@@ -42,7 +42,7 @@ const Awards = () => {
           className="w-full h-full object-cover"
         />
         {/* Dark luxury overlay */}
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-background/30 backdrop-blur-sm" />
       </div>
 
       {/* Decorative Glows */}
@@ -66,7 +66,7 @@ const Awards = () => {
             <span className="text-gradient-gold">Euphoria Events</span>
           </h2>
 
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-stone-200">
             Our reputation is built on creativity, professionalism, and
             unforgettable experiences that leave a lasting impression.
           </p>

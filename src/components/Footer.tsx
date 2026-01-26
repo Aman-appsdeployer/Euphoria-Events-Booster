@@ -89,7 +89,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <h4 className="text-lg font-serif font-bold mb-6">
+            <h4 className="text-xl  font-serif font-extrabold mb-6">
               Quick Links
             </h4>
 

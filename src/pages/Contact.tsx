@@ -1,47 +1,40 @@
-import galleryHeroImage from "@/assets/img21.jpg";
+import galleryHero1 from "@/assets/img21.jpg";
+import galleryHero2 from "@/assets/img22.jpg";
+import galleryHero3 from "@/assets/img23.jpg";
+
 import { useToast } from "@/hooks/use-toast";
-import { motion } from "framer-motion";
-import { CalendarHeart, CheckCircle, ClipboardList, Mail, MapPin, PartyPopper, Phone, PhoneCall, Send, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  CalendarHeart,
+  CheckCircle,
+  ClipboardList,
+  Mail,
+  MapPin,
+  PartyPopper,
+  Phone,
+  PhoneCall,
+  Send,
+  Sparkles,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+
+/* ================= HERO IMAGES ================= */
+const heroImages = [galleryHero1, galleryHero2, galleryHero3];
 
 /* ================= DATA ================= */
-
 const offices = [
-  {
-    city: "Kolkata",
-    address: "West Bengal, India – 700001",
-  },
-  {
-    city: "Mumbai",
-    address: "Maharashtra, India – 400001",
-  },
-  {
-    city: "Howrah",
-    address: "Howrah, West Bengal – 711101",
-  },
+  { city: "Kolkata", address: "West Bengal, India – 700001" },
+  { city: "Mumbai", address: "Maharashtra, India – 400001" },
+  { city: "Howrah", address: "Howrah, West Bengal – 711101" },
 ];
+
 const steps = [
-  {
-    icon: PhoneCall,
-    title: "Initial Consultation",
-    desc: "We understand your vision, style, and expectations.",
-  },
-  {
-    icon: ClipboardList,
-    title: "Planning & Design",
-    desc: "Our team curates concepts, themes, and vendors.",
-  },
-  {
-    icon: Sparkles,
-    title: "Execution",
-    desc: "Every detail is managed flawlessly on your big day.",
-  },
-  {
-    icon: PartyPopper,
-    title: "Celebrate",
-    desc: "Enjoy stress-free moments and unforgettable memories.",
-  },
+  { icon: PhoneCall, title: "Initial Consultation", desc: "We understand your vision, style, and expectations." },
+  { icon: ClipboardList, title: "Planning & Design", desc: "Our team curates concepts, themes, and vendors." },
+  { icon: Sparkles, title: "Execution", desc: "Every detail is managed flawlessly on your big day." },
+  { icon: PartyPopper, title: "Celebrate", desc: "Enjoy stress-free moments and unforgettable memories." },
 ];
+
 const reasons = [
   "10+ Years of Event Planning Experience",
   "500+ Successful Weddings & Events",
@@ -51,8 +44,47 @@ const reasons = [
   "Luxury Design with Budget Flexibility",
 ];
 
+/* ================= TYPEWRITER ================= */
+const Typewriter = () => {
+  const text = "Perfect Event";
+  const [value, setValue] = useState("");
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const speed = deleting ? 50 : 110;
+
+    const timer = setTimeout(() => {
+      if (!deleting) {
+        if (value.length < text.length) {
+          setValue(text.slice(0, value.length + 1));
+        } else {
+          setTimeout(() => setDeleting(true), 1200);
+        }
+      } else {
+        if (value.length > 0) {
+          setValue(text.slice(0, value.length - 1));
+        } else {
+          setDeleting(false);
+        }
+      }
+    }, speed);
+
+    return () => clearTimeout(timer);
+  }, [value, deleting]);
+
+  return (
+    <span className="text-gradient-gold">
+      {value}
+      <span className="ml-1 animate-pulse">|</span>
+    </span>
+  );
+};
+
+/* ================= PAGE ================= */
 const Contact = () => {
   const { toast } = useToast();
+  const [heroIndex, setHeroIndex] = useState(0);
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -60,88 +92,77 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e) => {
+  /* ================= HERO CAROUSEL ================= */
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  /* ================= FORM SUBMIT ================= */
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     toast({
       title: "Thank You!",
-      description:
-        "Our team will contact you shortly to plan your celebration.",
+      description: "Our team will contact you shortly to plan your celebration.",
     });
 
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      message: "",
-    });
+    setFormData({ name: "", phone: "", email: "", message: "" });
   };
 
   return (
-    <main>
+    <main className="overflow-hidden">
 
       {/* ================= HERO SECTION ================= */}
-      <section className="relative min-h-[100vh] flex items-center overflow-hidden">
-  {/* ================= BACKGROUND IMAGE ================= */}
-  <div className="absolute inset-0 z-0">
-    <img
-      src={galleryHeroImage}   // ← use your image import here
-      alt="Contact Euphoria Events"
-      className="w-full h-full object-cover"
-    />
-    {/* Gradient Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
-  </div>
+      <section className="relative min-h-screen flex items-center overflow-hidden">
 
-  {/* ================= CONTENT ================= */}
-  <div className="relative z-10 container mx-auto px-4 pt-24">
-    <motion.div
-      initial={{ opacity: 0, x: -60 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.9, ease: "easeOut" }}
-      className="max-w-3xl text-left"
-    >
-      <motion.p
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-        className="section-title"
-      >
-        Contact Us
-      </motion.p>
+        {/* Background Carousel */}
+        <div className="absolute inset-0 z-0">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={heroIndex}
+              src={heroImages[heroIndex]}
+              alt="Contact Euphoria Events"
+              className="absolute inset-0 w-full h-full object-cover"
+              initial={{ opacity: 0, scale: 1.08 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+            />
+          </AnimatePresence>
 
-      <motion.h1
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.35, duration: 0.7 }}
-        className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold mb-6"
-      >
-        Let’s Plan Your{" "}
-        <span className="text-gradient-gold">Perfect Event</span>
-      </motion.h1>
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
 
-      <motion.p
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.7 }}
-        className="text-muted-foreground max-w-xl mb-10 leading-relaxed"
-      >
-        From luxury weddings to corporate celebrations, Euphoria Events helps
-        you create unforgettable moments with elegance and precision.
-      </motion.p>
+          
+        </div>
 
-      <motion.a
-        href="#contact-form"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.7, duration: 0.6 }}
-        className="btn-gold inline-block"
-      >
-        Book a Consultation
-      </motion.a>
-    </motion.div>
-  </div>
-</section>
+        {/* Hero Content */}
+        <div className="relative z-10 container mx-auto px-4 pt-24">
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9 }}
+            className="max-w-3xl"
+          >
+            <p className="section-title">Contact Us</p>
+
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold mb-6">
+              Let’s Plan Your <Typewriter />
+            </h1>
+
+            <p className="text-muted-foreground max-w-xl mb-10">
+              From luxury weddings to corporate celebrations, Euphoria Events
+              helps you create unforgettable moments with elegance and precision.
+            </p>
+
+            <a href="#contact-form" className="btn-gold inline-block">
+              Book a Consultation
+            </a>
+          </motion.div>
+        </div>
+      </section>
       {/* ================= WHY CHOOSE US SECTION ================= */}
 <section className="py-28 bg-background relative">
   <div className="container mx-auto px-4">

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
   Briefcase,
@@ -11,7 +11,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
-
+import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 
 /* ================= IMAGES ================= */
@@ -22,253 +22,226 @@ import destinationWedding from "@/assets/img5.jpg";
 import beachWedding from "@/assets/img6.jpg";
 import musicEntertainment from "@/assets/img9.jpg";
 
-/* ================= SERVICES DATA ================= */
+/* ================= HERO CAROUSEL ================= */
+const heroImages = [
+  weddingCouple,
+  destinationWedding,
+  corporateEvent,
+];
+
+/* ================= TYPEWRITER ================= */
+const Typewriter = () => {
+  const text = "Planning Experiences";
+  const [value, setValue] = useState("");
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const speed = deleting ? 60 : 120;
+
+    const timer = setTimeout(() => {
+      setValue((prev) =>
+        deleting
+          ? text.substring(0, prev.length - 1)
+          : text.substring(0, prev.length + 1)
+      );
+
+      if (!deleting && value === text) {
+        setTimeout(() => setDeleting(true), 1500);
+      } else if (deleting && value === "") {
+        setDeleting(false);
+      }
+    }, speed);
+
+    return () => clearTimeout(timer);
+  }, [value, deleting]);
+
+  return (
+    <span className="text-gradient-gold inline-block">
+      {value}
+      <span className="ml-1 animate-pulse">|</span>
+    </span>
+  );
+};
+
+/* ================= DATA ================= */
 const services = [
   {
     title: "Wedding Planning",
     description:
-      "Complete wedding planning services from concept to execution, ensuring a seamless and stress-free celebration.",
+      "Complete wedding planning services from concept to execution.",
     image: weddingCouple,
     icon: Heart,
   },
   {
     title: "Destination Weddings",
     description:
-      "Luxury destination weddings planned with precision, elegance, and world-class coordination.",
+      "Luxury destination weddings with precision and elegance.",
     image: destinationWedding,
     icon: MapPin,
   },
   {
     title: "Beach Weddings",
     description:
-      "Romantic beachside weddings with stunning décor, serene settings, and flawless arrangements.",
+      "Romantic beachside weddings with stunning décor.",
     image: beachWedding,
     icon: Sparkles,
   },
   {
     title: "Corporate Events",
     description:
-      "Professional corporate events, conferences, product launches, and brand activations.",
+      "Professional conferences, launches, and brand events.",
     image: corporateEvent,
     icon: Briefcase,
   },
   {
     title: "Music & Entertainment",
     description:
-      "Live bands, DJs, celebrity artists, and performances to elevate your event experience.",
+      "Live bands, DJs, and premium entertainment.",
     image: musicEntertainment,
     icon: Music,
   },
   {
     title: "Private Parties",
     description:
-      "Birthdays, anniversaries, and exclusive celebrations curated with creativity and style.",
+      "Birthdays, anniversaries, and exclusive celebrations.",
     image: privateParty,
     icon: PartyPopper,
   },
 ];
 
-/* ================= HIGHLIGHTS ================= */
 const highlights = [
   {
     icon: Sparkles,
     title: "Premium Quality",
-    desc: "Luxury designs with attention to every detail.",
+    desc: "Luxury designs with fine attention to detail.",
   },
   {
     icon: Clock,
     title: "On-Time Execution",
-    desc: "Perfect coordination and timely delivery.",
+    desc: "Perfect coordination and delivery.",
   },
   {
     icon: ShieldCheck,
     title: "Trusted Vendors",
-    desc: "Reliable partners for seamless events.",
+    desc: "Reliable partners for flawless events.",
   },
   {
     icon: Users,
     title: "Dedicated Team",
-    desc: "Personal planners assigned to your event.",
+    desc: "Personal planners for every event.",
   },
 ];
 
-/* ================= CLIENTS DATA ================= */
 const clients = [
-  {
-    name: "Taj Hotels",
-    logo: "/logos/taj-hotels.svg",
-  },
-  {
-    name: "ITC Hotels",
-    logo: "/logos/itc.svg",
-  },
-  {
-    name: "Google",
-    logo: "/logos/google.svg",
-  },
-  {
-    name: "Infosys",
-    logo: "/logos/infosys.svg",
-  },
-  {
-    name: "Wedding Client",
-    logo: "/logos/wedding-client-1.png",
-  },
-  {
-    name: "Destination Venue",
-    logo: "/logos/wedding-client-2.png",
-  },
+  { name: "Taj Hotels", logo: "/logos/taj-hotels.svg" },
+  { name: "ITC Hotels", logo: "/logos/itc.svg" },
+  { name: "Google", logo: "/logos/google.svg" },
+  { name: "Infosys", logo: "/logos/infosys.svg" },
 ];
-
 
 /* ================= PAGE ================= */
 const Services = () => {
+  const [index, setIndex] = useState(0);
+
+  /* Auto slide carousel */
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <main className="overflow-hidden">
 
-  <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-  <div className="absolute inset-0 z-0">
-    <img
-      src={corporateEvent}
-      alt="Professional Event Planning Services"
-      className="w-full h-full object-cover"
-    />
-    <div
-      className="absolute inset-0 bg-gradient-to-r 
-                 from-background/95 via-background/75 to-background/40"
-    />
-  </div>
+      {/* ================= HERO ================= */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
 
-  {/* ================= CONTENT ================= */}
-  <div className="relative z-10 container mx-auto px-4 pt-24">
-    <div className="max-w-3xl">
+        {/* Background Carousel */}
+        <div className="absolute inset-0 z-0">
+          <AnimatePresence>
+            <motion.img
+              key={index}
+              src={heroImages[index]}
+              alt="Event Planning Services"
+              className="absolute inset-0 w-full h-full object-cover"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.4, ease: "easeInOut" }}
+            />
+          </AnimatePresence>
 
-      {/* Subtitle */}
-      <motion.p
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6 }}
-        className="section-title mb-4"
-      >
-        Our Services
-      </motion.p>
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/75 to-background/40" />
+        </div>
 
-      {/* Heading */}
-      <motion.h1
-        initial={{ opacity: 0, x: -60 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.7, delay: 0.15 }}
-        className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
-                   font-serif font-bold leading-tight mb-6"
-      >
-        Exceptional Event{" "}
-        <span className="text-gradient-gold">
-          Planning Experiences
-        </span>
-      </motion.h1>
+        {/* Hero Content */}
+        <div className="relative z-10 container mx-auto px-4 pt-24">
+          <div className="max-w-3xl">
 
-      {/* Description */}
-      <motion.p
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.7, delay: 0.3 }}
-        className="text-muted-foreground max-w-xl mb-10 text-lg leading-relaxed"
-      >
-        From luxury weddings and destination celebrations to corporate
-        events and private gatherings, we create seamless experiences
-        through thoughtful planning, creative design, and flawless execution.
-      </motion.p>
+            <motion.p
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="section-title mb-4"
+            >
+              Our Services
+            </motion.p>
 
-      {/* CTA */}
-      <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.7, delay: 0.45 }}
-        className="flex flex-wrap items-center gap-5"
-      >
-        <a href="#services" className="btn-gold">
-          Explore Our Services
-        </a>
+            <motion.h1
+              initial={{ opacity: 0, x: -60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.15 }}
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold mb-6"
+            >
+              Exceptional Event <Typewriter />
+            </motion.h1>
 
-        <a href="/contact" className="btn-outline-gold">
-          Get a Custom Quote
-        </a>
-      </motion.div>
-    </div>
-  </div>
+            <motion.p
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="text-muted-foreground max-w-xl mb-10 text-lg"
+            >
+              From luxury weddings to corporate events, we deliver
+              seamless experiences through creativity and precision.
+            </motion.p>
 
-  {/* ================= SCROLL INDICATOR ================= */}
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: 1 }}
-    className="absolute bottom-8 left-1/2 -translate-x-1/2"
-  >
-    <div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center pt-2">
-      <motion.div
-        animate={{ y: [0, 12, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-        className="w-1.5 h-1.5 bg-primary rounded-full"
-      />
-    </div>
-  </motion.div>
-</section>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.45 }}
+              className="flex gap-5"
+            >
+              <a href="#services" className="btn-gold">
+                Explore Our Services
+              </a>
+              <a href="/contact" className="btn-outline-gold">
+                Get a Custom Quote
+              </a>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* ================= HIGHLIGHTS ================= */}
-
-     <section className="py-28 bg-background relative overflow-hidden">
-  {/* Soft background accent */}
-  <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
-
-  <div className="container mx-auto px-4 relative">
-
-    {/* ================= HEADER ================= */}
-    <div className="text-center max-w-2xl mx-auto mb-20">
-      <p className="section-title">Why Our Services Stand Out</p>
-      <h2 className="section-heading">
-        What Makes Us{" "}
-        <span className="text-gradient-gold">Different</span>
-      </h2>
-      <p className="text-muted-foreground mt-4">
-        A perfect blend of creativity, professionalism, and flawless execution —
-        ensuring every event is truly unforgettable.
-      </p>
-    </div>
-
-    {/* ================= HIGHLIGHTS GRID ================= */}
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-      {highlights.map((item, i) => (
-        <motion.div
-          key={item.title}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: i * 0.1 }}
-          className="glass-card p-10 text-center 
-                     hover:shadow-2xl hover:-translate-y-1 
-                     transition-all duration-300"
-        >
-          {/* Icon */}
-          <div className="w-14 h-14 rounded-full bg-primary/10 
-                          flex items-center justify-center mx-auto mb-6">
-            <item.icon className="w-7 h-7 text-primary" />
-          </div>
-
-          {/* Title */}
-          <h3 className="font-semibold text-xl mb-3">
-            {item.title}
-          </h3>
-
-          {/* Description */}
-          <p className="text-muted-foreground leading-relaxed text-sm">
-            {item.desc}
-          </p>
-        </motion.div>
-      ))}
-    </div>
-
-  </div>
-</section>
+      <section className="py-28 bg-background">
+        <div className="container mx-auto px-4 grid md:grid-cols-4 gap-8">
+          {highlights.map((item, i) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="glass-card p-8 text-center"
+            >
+              <item.icon className="text-primary w-8 h-8 mx-auto mb-4" />
+              <h4 className="font-semibold mb-2">{item.title}</h4>
+              <p className="text-muted-foreground text-sm">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 {/* ================= SERVICES GRID ================= */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">

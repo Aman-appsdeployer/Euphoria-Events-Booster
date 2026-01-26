@@ -1,13 +1,25 @@
-import { motion, useInView } from "framer-motion";
-import { CheckCircle, Eye, HeartHandshake, ShieldCheck, Sparkles, Target } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  CheckCircle,
+  Eye,
+  HeartHandshake,
+  ShieldCheck,
+  Sparkles,
+  Target,
+} from "lucide-react";
+import { useEffect, useState } from "react";
 
 /* ================= IMAGES ================= */
-import { default as about4, default as heroImage } from "@/assets/img1.jpg";
+import about4 from "@/assets/img1.jpg";
 import about1 from "@/assets/img13.jpg";
 import about2 from "@/assets/img5.jpg";
 import about3 from "@/assets/img8.jpg";
+
+import hero1 from "@/assets/img1.jpg";
+import hero2 from "@/assets/img2.jpg";
+import hero3 from "@/assets/img3.jpg";
+
+const images = [hero1, hero2, hero3];
 
 /* ================= DATA ================= */
 const features = [
@@ -15,13 +27,6 @@ const features = [
   "Destination Weddings",
   "Creative Event Design",
   "End-to-End Execution",
-];
-
-const stats = [
-  { value: 250, suffix: "+", label: "Events Completed" },
-  { value: 50, suffix: "+", label: "Luxury Weddings" },
-  { value: 10, suffix: "+", label: "Destinations" },
-  { value: 5, suffix: "★", label: "Client Rating" },
 ];
 
 const values = [
@@ -41,62 +46,75 @@ const values = [
     desc: "Honest communication and reliable execution.",
   },
 ];
-/* ================= COUNT UP COMPONENT ================= */
-const CountUp = ({
-  end,
-  suffix,
-  duration = 2,
-}: {
-  end: number;
-  suffix: string;
-  duration?: number;
-}) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true });
+
+/* ================= TYPEWRITER ================= */
+const Typewriter = () => {
+  const text = "Unforgettable Celebrations";
+  const [display, setDisplay] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    if (!isInView) return;
+    const speed = isDeleting ? 60 : 120;
 
-    let startTime: number | null = null;
+    const timer = setTimeout(() => {
+      setDisplay((prev) =>
+        isDeleting
+          ? text.substring(0, prev.length - 1)
+          : text.substring(0, prev.length + 1)
+      );
 
-    const animate = (time: number) => {
-      if (!startTime) startTime = time;
-      const progress = Math.min((time - startTime) / (duration * 1000), 1);
-      setCount(Math.floor(end * progress));
-      if (progress < 1) requestAnimationFrame(animate);
-    };
+      if (!isDeleting && display === text) {
+        setTimeout(() => setIsDeleting(true), 1500);
+      } else if (isDeleting && display === "") {
+        setIsDeleting(false);
+      }
+    }, speed);
 
-    requestAnimationFrame(animate);
-  }, [isInView, end, duration]);
+    return () => clearTimeout(timer);
+  }, [display, isDeleting]);
 
   return (
-    <div
-      ref={ref}
-      className="text-4xl font-bold text-foreground"
-    >
-      {count}
-      <span className="text-primary">{suffix}</span>
-    </div>
+    <span className="text-gradient-gold">
+      {display}
+      <span className="ml-1 animate-pulse">|</span>
+    </span>
   );
 };
 
 /* ================= PAGE ================= */
 const About = () => {
+  const [index, setIndex] = useState(0);
+
+  /* Carousel Auto Slide */
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <main className="overflow-hidden">
-
       {/* ================= HERO ================= */}
-      <section className="relative min-h-screen flex items-center">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background Carousel */}
         <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Luxury Wedding & Event Setup"
-            className="w-full h-full object-cover"
-          />
+          <AnimatePresence>
+            <motion.img
+              key={index}
+              src={images[index]}
+              alt="Luxury Wedding & Event Setup"
+              className="absolute inset-0 w-full h-full object-cover"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.4, ease: "easeInOut" }}
+            />
+          </AnimatePresence>
           <div className="absolute inset-0 bg-black/60" />
         </div>
 
+        {/* Hero Content */}
         <div className="relative z-10 container mx-auto px-4 pt-32">
           <div className="max-w-3xl text-white">
             <motion.p
@@ -113,10 +131,7 @@ const About = () => {
               transition={{ delay: 0.2 }}
               className="text-4xl md:text-6xl xl:text-7xl font-serif font-bold mb-6"
             >
-              Crafting{" "}
-              <span className="text-gradient-gold">
-                Unforgettable Celebrations
-              </span>
+              Crafting <Typewriter />
             </motion.h1>
 
             <motion.p
@@ -129,7 +144,12 @@ const About = () => {
               across Kerala and beyond.
             </motion.p>
 
-            <div className="flex gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex gap-4"
+            >
               <a href="#contact" className="btn-gold">
                 Book a Consultation
               </a>
@@ -141,7 +161,7 @@ const About = () => {
               >
                 WhatsApp Us
               </a>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

@@ -119,7 +119,7 @@ const Services = () => {
                   </p>
 
                   <a
-                    href="#contact"
+                    href="/contact"
                     className="inline-flex items-center gap-2 
                                text-primary font-medium text-sm group/btn"
                   >

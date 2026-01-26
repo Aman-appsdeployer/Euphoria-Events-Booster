@@ -6,9 +6,11 @@ import Contact from "@/pages/Contact";
 import Gallery from "@/pages/Gallery";
 import Index from "@/pages/Index";
 import Service from "@/pages/Service";
+import ScrollToTop from "./components/ScrollToTop";
 const App = () => {
   return (
     <BrowserRouter>
+    <ScrollToTop />
       <Routes>
         {/* LAYOUT ROUTE */}
         <Route element={<Layout />}>

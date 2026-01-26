@@ -58,7 +58,7 @@ const FAQ = () => {
               our team is always happy to assist you personally.
             </p>
 
-            <a href="#contact" className="btn-gold">
+            <a href="/contact" className="btn-gold">
               Get in Touch
             </a>
           </motion.div>
