@@ -22,7 +22,6 @@ const Index = () => {
       <Venues />
       <Gallery />
       <FAQ />
-      {/* <Contact /> */}
     </main>
   );
 };
