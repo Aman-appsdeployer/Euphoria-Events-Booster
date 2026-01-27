@@ -68,7 +68,7 @@ const TypewriterText = () => {
           setWordIndex((prev) => (prev + 1) % words.length);
         }
       }
-    }, deleting ? 70 : 140);
+    }, deleting ? 60 : 120);
 
     return () => clearTimeout(timeout);
   }, [charIndex, deleting, wordIndex]);
@@ -81,28 +81,42 @@ const TypewriterText = () => {
   );
 };
 
-// ================= ANIMATION VARIANTS =================
+// ================= FRAMER MOTION VARIANTS =================
+
 const containerVariants = {
-  hidden: {},
+  hidden: { opacity: 0 },
   show: {
-    transition: { staggerChildren: 0.12 },
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  hidden: {
+    opacity: 0,
+    y: 60,
+    scale: 0.9,
+  },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: {
+      duration: 0.7,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
   },
 };
+
+// ================= MAIN COMPONENT =================
 
 const Venues = () => {
   return (
     <section id="venues" className="relative py-28 bg-background overflow-hidden">
-      {/* Luxury glow background */}
+      {/* Glow Background */}
       <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-yellow-500/15 blur-[160px] rounded-full" />
       <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-yellow-500/10 blur-[160px] rounded-full" />
 
@@ -112,6 +126,7 @@ const Venues = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
           <p className="tracking-[0.3em] uppercase text-yellow-400 text-sm mb-3">
@@ -126,7 +141,6 @@ const Venues = () => {
             for Your Wedding
           </h2>
 
-          {/* TYPEWRITER TEXT */}
           <p className="mt-5 text-lg text-gray-300">
             Explore <TypewriterText /> across India curated by{" "}
             <span className="text-yellow-400 font-semibold">
@@ -140,19 +154,20 @@ const Venues = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10"
         >
           {venues.map((venue) => (
             <motion.div
               key={venue.name}
               variants={cardVariants}
-              whileHover={{ y: -12 }}
+              whileHover={{ y: -14, scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 200, damping: 15 }}
               className="group relative rounded-3xl overflow-hidden 
                          bg-white/10 backdrop-blur-xl border border-white/20 
                          shadow-xl transition-all duration-500"
             >
-              {/* Glow border */}
+              {/* Glow Border */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-r 
                               from-yellow-400/40 via-pink-500/30 to-yellow-400/40 
                               opacity-0 group-hover:opacity-100 blur-xl transition duration-700" />
@@ -169,7 +184,7 @@ const Venues = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
               </div>
 
-              {/* Rating badge */}
+              {/* Rating Badge */}
               <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-md rounded-full px-3 py-1 flex items-center gap-1 shadow-lg">
                 <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
                 <span className="text-sm font-medium text-white">
@@ -192,11 +207,12 @@ const Venues = () => {
           ))}
         </motion.div>
 
-        {/* CTA */}
+        {/* ================= CTA BUTTON ================= */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center mt-16"
         >
           <a
@@ -215,155 +231,3 @@ const Venues = () => {
 };
 
 export default Venues;
-
-
-
-
-
-
-
-
-
-
-
-// import { motion } from "framer-motion";
-// import { MapPin, Star } from "lucide-react";
-
-// import venue1 from "@/assets/img1.jpg";
-// import venue2 from "@/assets/img2.jpg";
-// import venue3 from "@/assets/img3.jpg";
-// import venue4 from "@/assets/img4.jpg";
-
-// const venues = [
-//   {
-//     name: "Brookside Garden Resort",
-//     location: "kolkata, West Bengal",
-//     rating: 4.8,
-//     image: venue1,
-//   },
-//   {
-//     name: "Vembanad Lake Resort",
-//     location: "west Bengal",
-//     rating: 4.6,
-//     image: venue2,
-//   },
-//   {
-//     name: "Heritage Manor",
-//     location: "Darjeeling, West Bengal",
-//     rating: 4.9,
-//     image: venue3,
-//   },
-//   {
-//     name: "Coastal Paradise Resort",
-//     location: "Noth24, West Bengal",
-//     rating: 5.0,
-//     image: venue4,
-//   },
-// ];
-
-// const Venues = () => {
-//   return (
-//     <section id="venues" className="relative py-24 bg-background">
-//       <div className="container mx-auto px-4">
-
-//         {/* ================= HEADER ================= */}
-//         <motion.div
-//           initial={{ opacity: 0, y: 30 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           viewport={{ once: true }}
-//           className="text-center mb-20"
-//         >
-//           <p className="section-title">Wedding Venues</p>
-
-//           <h2 className="section-heading">
-//             Handpicked Venues by{" "}
-//             <span className="text-gradient-gold">Euphoria Events</span>
-//           </h2>
-
-//           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-//             Discover breathtaking wedding venues across India — from serene
-//             backwaters to luxury beach resorts — curated for unforgettable
-//             celebrations.
-//           </p>
-//         </motion.div>
-
-//         {/* ================= VENUES GRID ================= */}
-//         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-//           {venues.map((venue, index) => (
-//             <motion.div
-//               key={venue.name}
-//               initial={{ opacity: 0, y: 40 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               viewport={{ once: true }}
-//               transition={{ delay: index * 0.12 }}
-//               className="group card-hover"
-//             >
-//               <div className="relative overflow-hidden rounded-2xl bg-card">
-
-//                 {/* Image */}
-//                 <div className="aspect-[4/3] overflow-hidden">
-//                   <img
-//                     src={venue.image}
-//                     alt={venue.name}
-//                     className="w-full h-full object-cover 
-//                                transition-transform duration-700 
-//                                group-hover:scale-110"
-//                   />
-//                 </div>
-
-//                 {/* Gradient Overlay */}
-//                 <div className="absolute inset-0 bg-gradient-to-t 
-//                                 from-background/80 via-background/20 
-//                                 to-transparent opacity-0 
-//                                 group-hover:opacity-100 transition-opacity" />
-
-//                 {/* Rating */}
-//                 <div
-//                   className="absolute top-4 right-4 
-//                              bg-background/90 backdrop-blur-sm 
-//                              rounded-full px-3 py-1 
-//                              flex items-center gap-1 shadow"
-//                 >
-//                   <Star className="w-3.5 h-3.5 text-primary fill-current" />
-//                   <span className="text-sm font-medium">
-//                     {venue.rating}
-//                   </span>
-//                 </div>
-
-//                 {/* Content */}
-//                 <div className="p-5">
-//                   <h3
-//                     className="text-lg font-serif font-bold text-foreground 
-//                                mb-2 group-hover:text-primary 
-//                                transition-colors"
-//                   >
-//                     {venue.name}
-//                   </h3>
-
-//                   <div className="flex items-center gap-1 text-muted-foreground text-sm">
-//                     <MapPin className="w-4 h-4" />
-//                     {venue.location}
-//                   </div>
-//                 </div>
-//               </div>
-//             </motion.div>
-//           ))}
-//         </div>
-
-//         {/* ================= CTA ================= */}
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           viewport={{ once: true }}
-//           className="text-center mt-14"
-//         >
-//           <a href="/contact" className="btn-gold">
-//             Explore All Venues
-//           </a>
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Venues;
