@@ -17,7 +17,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 /* ================= IMAGES ================= */
 import about4 from "@/assets/img1.jpg";
 import about5 from "@/assets/img13.jpg";
-import about1 from "@/assets/img32.jpg";
+import about1 from "@/assets/img37.jpg";
 import about2 from "@/assets/img5.jpg";
 import about3 from "@/assets/img8.jpg";
 
