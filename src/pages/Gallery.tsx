@@ -1,10 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectCoverflow } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
 
 /* ================= IMAGES ================= */
 import img10 from "@/assets/img10.jpg";
 import img11 from "@/assets/img11.jpg";
-import img12 from "@/assets/img12.jpg";
+import img12 from "@/assets/img32.jpg";
 import img13 from "@/assets/img13.jpg";
 import img14 from "@/assets/img14.jpg";
 import img15 from "@/assets/img15.jpg";
@@ -12,9 +16,10 @@ import img24 from "@/assets/img24.jpg";
 import img25 from "@/assets/img25.jpg";
 import img8 from "@/assets/img8.jpg";
 import img9 from "@/assets/img9.jpg";
+import img32 from "@/assets/img32.jpg";
 
 /* ================= HERO CAROUSEL ================= */
-const heroImages = [img24, img13, img11];
+const heroImages = [img24, img13, img11,img32, img14];
 
 /* ================= TYPEWRITER ================= */
 const Typewriter = () => {
@@ -29,7 +34,7 @@ const Typewriter = () => {
       setValue((prev) =>
         deleting
           ? text.substring(0, prev.length - 1)
-          : text.substring(0, prev.length + 1)
+          : text.substring(0, prev.length + 1),
       );
 
       if (!deleting && value === text) {
@@ -53,9 +58,24 @@ const Typewriter = () => {
 /* ================= FEATURED WORK ================= */
 const ourWorkImages = [
   { id: 1, title: "Luxury Wedding", category: "Weddings", image: img13 },
-  { id: 2, title: "Corporate Conference", category: "Corporate Events", image: img8 },
-  { id: 3, title: "Destination Celebration", category: "Destination Events", image: img11 },
-  { id: 4, title: "Private Celebration", category: "Private Parties", image: img12 },
+  {
+    id: 2,
+    title: "Corporate Conference",
+    category: "Corporate Events",
+    image: img8,
+  },
+  {
+    id: 3,
+    title: "Destination Celebration",
+    category: "Destination Events",
+    image: img11,
+  },
+  {
+    id: 4,
+    title: "Private Celebration",
+    category: "Private Parties",
+    image: img12,
+  },
   { id: 5, title: "Brand Launch", category: "Corporate Events", image: img25 },
   { id: 6, title: "Beach Wedding", category: "Weddings", image: img9 },
 ];
@@ -63,12 +83,32 @@ const ourWorkImages = [
 /* ================= FULL ARCHIVE ================= */
 const categoryImages = [
   ...ourWorkImages,
-  { id: 7, title: "Island Wedding", category: "Destination Events", image: img10 },
-  { id: 8, title: "Anniversary Celebration", category: "Private Parties", image: img11 },
+  {
+    id: 7,
+    title: "Island Wedding",
+    category: "Destination Events",
+    image: img10,
+  },
+  {
+    id: 8,
+    title: "Anniversary Celebration",
+    category: "Private Parties",
+    image: img11,
+  },
   { id: 9, title: "Gala Dinner", category: "Corporate Events", image: img9 },
   { id: 10, title: "Garden Wedding", category: "Weddings", image: img12 },
-  { id: 11, title: "Cityscape Wedding", category: "Destination Events", image: img14 },
-  { id: 12, title: "Family Reunion", category: "Private Parties", image: img15 },
+  {
+    id: 11,
+    title: "Cityscape Wedding",
+    category: "Destination Events",
+    image: img14,
+  },
+  {
+    id: 12,
+    title: "Family Reunion",
+    category: "Private Parties",
+    image: img15,
+  },
 ];
 
 const categories = [
@@ -99,7 +139,6 @@ const Gallery = () => {
 
   return (
     <main className="overflow-hidden">
-
       {/* ================= HERO ================= */}
       <section className="relative min-h-screen flex items-center">
         <div className="absolute inset-0">
@@ -166,53 +205,85 @@ const Gallery = () => {
       </section>
 
       {/* ================= OUR WORK ================= */}
-      <section id="our-work" className="py-24 bg-background">
-        <div className="container mx-auto px-4">
+      <section
+        id="our-work"
+        className="py-10 bg-secondary/30 relative overflow-hidden"
+      >
+        {/* Luxury Background Glow */}
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-yellow-400/20 rounded-full blur-3xl animate-pulse" />
+
+        <div className="container mx-auto px-4 relative">
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-2xl mb-14"
+            className="max-w-2xl mb-16"
           >
-            {/* <p className="section-title">Our Work</p> */}
-            <h2 className="text-3xl font-semibold mb-4">
-              Moments That Define Our Craft
+            <h2 className="section-heading mb-4">
+              Moments That Define Our{" "}
+              <span className="text-gradient-gold">Craft</span>
             </h2>
-            <p className="text-muted-foreground">
-              A curated selection of celebrations that reflect our creativity and precision.
+            <p className="text-muted-foreground text-lg">
+              A curated selection of celebrations that reflect our creativity
+              and precision.
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {ourWorkImages.map((item, i) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.12 }}
-                whileHover={{ y: -6 }}
-                className="group relative h-72 rounded-2xl overflow-hidden"
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition" />
-
+          {/* Swiper */}
+          <Swiper
+            modules={[Autoplay, EffectCoverflow]}
+            effect="coverflow"
+            centeredSlides={true}
+            grabCursor={true}
+            loop={true}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            slidesPerView={1.2}
+            breakpoints={{
+              640: { slidesPerView: 1.6 },
+              1024: { slidesPerView: 2.6 },
+            }}
+            coverflowEffect={{
+              rotate: 10,
+              stretch: 0,
+              depth: 150,
+              modifier: 1,
+              slideShadows: false,
+            }}
+            className="mt-8"
+          >
+            {ourWorkImages.map((item) => (
+              <SwiperSlide key={item.id}>
                 <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileHover={{ y: 0, opacity: 1 }}
-                  className="absolute bottom-0 p-6 text-white"
+                  whileHover={{ y: -10 }}
+                  transition={{ duration: 0.5 }}
+                  className="group relative h-[480px] rounded-3xl overflow-hidden shadow-2xl"
                 >
-                  <h4 className="font-semibold">{item.title}</h4>
-                  <p className="text-sm">{item.category}</p>
+                  {/* Image */}
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70" />
+
+                  {/* Caption */}
+                  <motion.div
+                    initial={{ y: 40, opacity: 0 }}
+                    whileHover={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute bottom-0 p-8 text-white"
+                  >
+                    <h4 className="text-xl font-semibold mb-1">{item.title}</h4>
+                    <p className="text-sm opacity-80">{item.category}</p>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       </section>
 
@@ -252,7 +323,10 @@ const Gallery = () => {
             ))}
           </div>
 
-          <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <motion.div
+            layout
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10"
+          >
             {filteredImages.map((item) => (
               <motion.div
                 key={item.id}
@@ -278,7 +352,6 @@ const Gallery = () => {
           </motion.div>
         </div>
       </section>
-
     </main>
   );
 };

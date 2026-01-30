@@ -1,6 +1,7 @@
 import galleryHero1 from "@/assets/img21.jpg";
 import galleryHero2 from "@/assets/img22.jpg";
 import galleryHero3 from "@/assets/img23.jpg";
+import gallerHero4 from "@/assets/img32.jpg";
 
 import { useToast } from "@/hooks/use-toast";
 import { AnimatePresence, motion } from "framer-motion";
@@ -19,7 +20,7 @@ import {
 import { useEffect, useState } from "react";
 
 /* ================= HERO IMAGES ================= */
-const heroImages = [galleryHero1, galleryHero2, galleryHero3];
+const heroImages = [galleryHero1, galleryHero2, galleryHero3, gallerHero4];
 
 /* ================= DATA ================= */
 const offices = [
@@ -29,10 +30,26 @@ const offices = [
 ];
 
 const steps = [
-  { icon: PhoneCall, title: "Initial Consultation", desc: "We understand your vision, style, and expectations." },
-  { icon: ClipboardList, title: "Planning & Design", desc: "Our team curates concepts, themes, and vendors." },
-  { icon: Sparkles, title: "Execution", desc: "Every detail is managed flawlessly on your big day." },
-  { icon: PartyPopper, title: "Celebrate", desc: "Enjoy stress-free moments and unforgettable memories." },
+  {
+    icon: PhoneCall,
+    title: "Initial Consultation",
+    desc: "We understand your vision, style, and expectations.",
+  },
+  {
+    icon: ClipboardList,
+    title: "Planning & Design",
+    desc: "Our team curates concepts, themes, and vendors.",
+  },
+  {
+    icon: Sparkles,
+    title: "Execution",
+    desc: "Every detail is managed flawlessly on your big day.",
+  },
+  {
+    icon: PartyPopper,
+    title: "Celebrate",
+    desc: "Enjoy stress-free moments and unforgettable memories.",
+  },
 ];
 
 const reasons = [
@@ -106,7 +123,8 @@ const Contact = () => {
 
     toast({
       title: "Thank You!",
-      description: "Our team will contact you shortly to plan your celebration.",
+      description:
+        "Our team will contact you shortly to plan your celebration.",
     });
 
     setFormData({ name: "", phone: "", email: "", message: "" });
@@ -114,10 +132,8 @@ const Contact = () => {
 
   return (
     <main className="overflow-hidden">
-
       {/* ================= HERO SECTION ================= */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-
         {/* Background Carousel */}
         <div className="absolute inset-0 z-0">
           <AnimatePresence mode="wait">
@@ -134,8 +150,6 @@ const Contact = () => {
           </AnimatePresence>
 
           <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
-
-          
         </div>
 
         {/* Hero Content */}
@@ -154,7 +168,8 @@ const Contact = () => {
 
             <p className="text-muted-foreground max-w-xl mb-10">
               From luxury weddings to corporate celebrations, Euphoria Events
-              helps you create unforgettable moments with elegance and precision.
+              helps you create unforgettable moments with elegance and
+              precision.
             </p>
 
             <a href="#contact-form" className="btn-gold inline-block">
@@ -164,97 +179,133 @@ const Contact = () => {
         </div>
       </section>
       {/* ================= WHY CHOOSE US SECTION ================= */}
-<section className="py-28 bg-background relative">
-  <div className="container mx-auto px-4">
 
-    {/* Header */}
-    <div className="text-center max-w-2xl mx-auto mb-20">
-      <p className="section-title">Why Choose Us</p>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto py-28">
+        {reasons.map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 40, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: i * 0.12, ease: "easeOut" }}
+            whileHover={{ y: -12, rotateX: 4, rotateY: -4 }}
+            className="relative group perspective-1000"
+          >
+            {/* Glow Border */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/30 via-yellow-400/20 to-pink-400/30 opacity-0 group-hover:opacity-100 blur-xl transition duration-500"></div>
 
-      <h2 className="text-3xl md:text-4xl font-serif font-bold mt-3 mb-5">
-        Excellence in <span className="text-gradient-gold">Every Detail</span>
-      </h2>
+            {/* Card */}
+            <div className="relative glass-card p-9 rounded-3xl border border-white/20 backdrop-blur-xl shadow-xl transition-all duration-300">
+              {/* Icon */}
+              <motion.div
+                whileHover={{ rotate: 12, scale: 1.15 }}
+                className="w-14 h-14 rounded-full bg-primary/15 
+                     flex items-center justify-center mb-6 
+                     shadow-md transition"
+              >
+                <CheckCircle className="w-7 h-7 text-primary" />
+              </motion.div>
 
-      <p className="text-muted-foreground leading-relaxed">
-        We don’t just plan events — we craft unforgettable experiences with
-        precision, creativity, and care.
-      </p>
-    </div>
+              {/* Text */}
+              <p className="font-medium text-foreground leading-relaxed text-lg">
+                {item}
+              </p>
 
-    {/* Cards */}
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
-      {reasons.map((item, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.1, duration: 0.5 }}
-          className="group relative glass-card p-8 rounded-2xl 
-                     transition-all duration-300 
-                     hover:-translate-y-1 hover:shadow-xl"
-        >
-          {/* Icon */}
-          <div className="w-12 h-12 rounded-full bg-primary/15 
-                          flex items-center justify-center mb-5
-                          group-hover:bg-primary/25 transition">
-            <CheckCircle className="w-6 h-6 text-primary" />
-          </div>
-
-          {/* Text */}
-          <p className="font-medium text-foreground leading-relaxed">
-            {item}
-          </p>
-
-          {/* Decorative line */}
-          <span className="absolute bottom-0 left-8 right-8 h-[1px] 
-                           bg-gradient-to-r from-transparent 
-                           via-primary/30 to-transparent opacity-0 
-                           group-hover:opacity-100 transition" />
-        </motion.div>
-      ))}
-    </div>
-
-  </div>
-</section>
+              {/* Animated Bottom Line */}
+              <span
+                className="absolute bottom-6 left-10 right-10 h-[2px] 
+                         bg-gradient-to-r from-transparent via-primary to-transparent 
+                         opacity-0 group-hover:opacity-100 transition duration-500"
+              />
+            </div>
+          </motion.div>
+        ))}
+      </div>
 
       {/* ================= HOW IT WORKS SECTION ================= */}
-<section className="py-24 bg-secondary/20">
-      <div className="container mx-auto px-4">
+      <section className="py-28 bg-secondary/30 relative overflow-hidden">
+        {/* Floating Gradient Orbs */}
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-yellow-400/20 rounded-full blur-3xl animate-pulse" />
 
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="section-title">How It Works</p>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
-            Our Simple Planning Process
-          </h2>
-          <p className="text-muted-foreground">
-            A seamless journey from idea to celebration.
-          </p>
+        <div className="container mx-auto px-4 relative">
+          {/* Header */}
+          <div className="text-center max-w-2xl mx-auto mb-20">
+            <p className="section-title tracking-widest uppercase">
+              How It Works
+            </p>
+
+            <h2 className="section-heading mt-3">
+              Our Simple{" "}
+              <span className="text-gradient-gold">Planning Process</span>
+            </h2>
+
+            <p className="text-muted-foreground mt-4 text-lg">
+              A seamless journey from idea to celebration.
+            </p>
+
+            {/* Decorative Line */}
+            <div className="mt-6 flex justify-center">
+              <span className="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></span>
+            </div>
+          </div>
+
+          {/* Steps Timeline */}
+          <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Horizontal Line (Desktop) */}
+            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+
+            {steps.map((step, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: i * 0.12, ease: "easeOut" }}
+                whileHover={{ y: -12, scale: 1.04 }}
+                className="relative group"
+              >
+                {/* Glow Border */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/30 via-yellow-400/20 to-pink-400/30 opacity-0 group-hover:opacity-100 blur-xl transition duration-500"></div>
+
+                {/* Card */}
+                <div
+                  className="relative glass-card p-8 text-center rounded-3xl border border-white/20 backdrop-blur-xl shadow-xl 
+                          h-[340px] flex flex-col justify-between"
+                >
+                  {/* Step Number */}
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-primary to-yellow-400 text-white font-bold flex items-center justify-center shadow-lg">
+                    {i + 1}
+                  </div>
+
+                  {/* Icon */}
+                  <motion.div
+                    whileHover={{ rotate: 12, scale: 1.2 }}
+                    className="w-16 h-16 rounded-full bg-primary/15 flex items-center justify-center mx-auto mt-6 shadow-md"
+                  >
+                    <step.icon className="w-8 h-8 text-primary" />
+                  </motion.div>
+
+                  {/* Title */}
+                  <h4 className="font-semibold text-xl tracking-wide">
+                    {step.title}
+                  </h4>
+
+                  {/* Description */}
+                  <p className="text-muted-foreground leading-relaxed text-base line-clamp-3">
+                    {step.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
+      </section>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="glass-card p-6 text-center"
-            >
-              <step.icon className="w-10 h-10 text-primary mx-auto mb-4" />
-              <h4 className="font-semibold mb-2">{step.title}</h4>
-              <p className="text-sm text-muted-foreground">{step.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-
-      </div>
-    </section>
       {/* ================= CONTACT SECTION ================= */}
       <section
         id="contact-form"
-        className="relative py-24 bg-background overflow-hidden"
+        className="relative py-10 bg-background overflow-hidden"
       >
         {/* Decorative blobs */}
         <div className="absolute -top-32 -right-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
@@ -262,7 +313,6 @@ const Contact = () => {
 
         <div className="relative container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-14">
-
             {/* ================= FORM ================= */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
@@ -430,7 +480,6 @@ const Contact = () => {
           referrerPolicy="no-referrer-when-downgrade"
         />
       </section>
-
     </main>
   );
 };

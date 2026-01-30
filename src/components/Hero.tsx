@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import hero1 from "@/assets/img1.jpg";
 import hero2 from "@/assets/img2.jpg";
 import hero3 from "@/assets/img3.jpg";
+import hero4 from "@/assets/img30.jpg";
 
-const images = [hero1, hero2, hero3];
+const images = [hero1, hero2, hero3, hero4];
 
 // ================= BRAND TYPEWRITER =================
 const BrandTypewriter = () => {

@@ -295,9 +295,9 @@ const Services = () => {
       </section>
 
       {/* ================= PROCESS ================= */}
-      <section className="py-28 bg-secondary/30 relative overflow-hidden">
+      <section className="py-10 bg-secondary/30 relative overflow-hidden">
   {/* Subtle background texture */}
-  <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
+  <div className="absolute inset-0 bg-secondary/30 from-primary/5 to-transparent pointer-events-none" />
 
   <div className="container mx-auto px-4 max-w-6xl relative">
     
@@ -371,9 +371,9 @@ const Services = () => {
 
 
       {/* ================= CTA ================= */}
-      <section className="relative py-32 bg-background text-center overflow-hidden">
+      <section className="relative py-10 bg-background text-center overflow-hidden">
   {/* Soft background accent */}
-  <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none" />
+  <div className="absolute inset-0 bg-secondary/30 from-primary/10 to-transparent pointer-events-none" />
 
   <div className="container mx-auto px-4 relative max-w-3xl">
     <motion.h2

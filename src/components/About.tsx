@@ -1,13 +1,19 @@
 import { motion, useInView } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Autoplay, EffectCoverflow } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import about4 from "@/assets/img2.jpg";
-import about1 from "@/assets/img3.jpg";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+
+import about3 from "@/assets/img20.jpg";
+import about1 from "@/assets/img5.jpg";
 import about2 from "@/assets/img8.jpg";
-import about3 from "@/assets/img9.jpg";
+import about4 from "@/assets/img9.jpg";
+import about5 from "@/assets/img13.jpg";
 
-/* ================= TYPEWRITER (LOOP + SCROLL BASED) ================= */
+/* ================= TYPEWRITER ================= */
 
 const Typewriter = ({ text }: { text: string }) => {
   const ref = useRef<HTMLSpanElement | null>(null);
@@ -23,19 +29,22 @@ const Typewriter = ({ text }: { text: string }) => {
       return;
     }
 
-    const timeout = setTimeout(() => {
-      setCount((prev) => {
-        if (!isDeleting) {
-          if (prev < text.length) return prev + 1;
-          setIsDeleting(true);
-          return prev;
-        } else {
-          if (prev > 0) return prev - 1;
-          setIsDeleting(false);
-          return prev;
-        }
-      });
-    }, isDeleting ? 70 : 140);
+    const timeout = setTimeout(
+      () => {
+        setCount((prev) => {
+          if (!isDeleting) {
+            if (prev < text.length) return prev + 1;
+            setIsDeleting(true);
+            return prev;
+          } else {
+            if (prev > 0) return prev - 1;
+            setIsDeleting(false);
+            return prev;
+          }
+        });
+      },
+      isDeleting ? 70 : 140,
+    );
 
     return () => clearTimeout(timeout);
   }, [count, isDeleting, isInView, text]);
@@ -69,35 +78,58 @@ const features = [
 
 const About = () => {
   return (
-    <section id="about" className="py-28 bg-secondary/30 overflow-hidden">
+    <section id="about" className="py-10 bg-secondary/30 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-          {/* ================= IMAGE LEFT ================= */}
+          {/* ================= IMAGE CAROUSEL LEFT ================= */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ amount: 0.3 }}
             transition={{ duration: 1, ease: "easeOut" }}
+            className="relative"
           >
-            <div className="grid grid-cols-2 gap-4">
-              {[about1, about2, about3, about4].map((img, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.6 }}
-                  className={`rounded-2xl overflow-hidden ${
-                    i % 2 === 0 ? "h-48" : "h-64"
-                  }`}
-                >
-                  <img
-                    src={img}
-                    alt="Wedding Event"
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
+            {/* Glow Background */}
+            <div className="absolute -inset-10 bg-gradient-to-tr from-yellow-400/20 via-pink-400/10 to-purple-500/20 blur-3xl rounded-full"></div>
+
+            <Swiper
+              modules={[Autoplay, EffectCoverflow]}
+              effect="coverflow"
+              grabCursor={true}
+              centeredSlides={true}
+              loop={true}
+              autoplay={{ delay: 2500, disableOnInteraction: false }}
+              slidesPerView={1.2}
+              breakpoints={{
+                640: { slidesPerView: 1.5 },
+                1024: { slidesPerView: 2 },
+              }}
+              coverflowEffect={{
+                rotate: 20,
+                stretch: 0,
+                depth: 120,
+                modifier: 1,
+                slideShadows: false,
+              }}
+              className="relative z-10"
+            >
+              {[about1, about2, about3, about4, about5].map((img, i) => (
+                <SwiperSlide key={i}>
+                  <motion.div
+                    whileHover={{ scale: 1.06 }}
+                    transition={{ duration: 0.5 }}
+                    className="rounded-2xl overflow-hidden shadow-2xl h-72 md:h-80 lg:h-96"
+                  >
+                    <img
+                      src={img}
+                      alt="Wedding Event"
+                      className="w-full h-full object-cover"
+                    />
+                  </motion.div>
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           </motion.div>
 
           {/* ================= CONTENT RIGHT ================= */}
@@ -198,10 +230,3 @@ const About = () => {
 };
 
 export default About;
-
-
-
-
-
-
-

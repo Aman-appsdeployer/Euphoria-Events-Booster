@@ -9,7 +9,15 @@ import beachWedding from "@/assets/img13.jpg";
 import destinationWedding from "@/assets/img3.jpg";
 import musicEntertainment from "@/assets/img4.jpg";
 import weddingCouple from "@/assets/img9.jpg";
-
+import haldi from "@/assets/h1.jpg";
+import sangeet from "@/assets/img16.jpg";
+import weddingCeremony from "@/assets/h2.jpg";
+import reception from "@/assets/img18.jpg";
+import cocktailParty from "@/assets/img19.jpg";
+import preWeddingShoot from "@/assets/h5.jpg";
+import engagement from "@/assets/img32.jpg";
+import bridalShower from "@/assets/img23.jpg";
+import farewellParty from "@/assets/img24.jpg";
 // ================= IMAGES =================
 const images = [
   { src: weddingCouple, alt: "Luxury Wedding Celebration" },
@@ -19,6 +27,15 @@ const images = [
   { src: privateParty, alt: "Private Party Celebration" },
   { src: corporateEvent, alt: "Corporate Event Experience" },
   { src: coupleImage, alt: "Romantic Couple Moments" },
+  { src: haldi, alt: "Vibrant Haldi Ceremony" },
+  { src: sangeet, alt: "Joyful Sangeet Night" },
+  { src: weddingCeremony, alt: "Grand Wedding Ceremony" },
+  { src: reception, alt: "Lavish Wedding Reception" },
+  { src: cocktailParty, alt: "Chic Cocktail Party" },
+  { src: preWeddingShoot, alt: "Pre-Wedding Photoshoot" },
+  { src: engagement, alt: "Elegant Engagement Event" },
+  { src: bridalShower, alt: "Charming Bridal Shower" },
+  { src: farewellParty, alt: "Memorable Farewell Party" },
 ];
 
 // ================= TYPEWRITER TEXT =================
