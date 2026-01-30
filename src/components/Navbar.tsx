@@ -71,7 +71,7 @@ const Navbar = () => {
           {/* ================= CTA ================= */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="tel:+91XXXXXXXXXX"
+              href="/contact"
               className="flex items-center gap-2 bg-primary text-primary-foreground 
                          px-5 py-2.5 rounded-full font-medium text-sm 
                          transition-all duration-300 hover:bg-primary/90"
@@ -119,7 +119,7 @@ const Navbar = () => {
               ))}
 
               <a
-                href="tel:+91XXXXXXXXXX"
+                href="/contact"
                 className="btn-gold text-center mt-4"
               >
                 <Phone className="w-4 h-4 inline mr-2" />

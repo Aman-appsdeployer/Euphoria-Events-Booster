@@ -1,25 +1,25 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
+import { Autoplay, EffectCoverflow } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 /* ================= IMAGES ================= */
 import img10 from "@/assets/img10.jpg";
 import img11 from "@/assets/img11.jpg";
-import img12 from "@/assets/img32.jpg";
 import img13 from "@/assets/img13.jpg";
-import img14 from "@/assets/img14.jpg";
 import img15 from "@/assets/img15.jpg";
 import img24 from "@/assets/img24.jpg";
 import img25 from "@/assets/img25.jpg";
+import img32 from "@/assets/img32.jpg";
+import img37 from "@/assets/img37.jpg";
+import img38 from "@/assets/img38.jpg";
 import img8 from "@/assets/img8.jpg";
 import img9 from "@/assets/img9.jpg";
-import img32 from "@/assets/img32.jpg";
 
 /* ================= HERO CAROUSEL ================= */
-const heroImages = [img24, img13, img11,img32, img14];
+const heroImages = [img24, img13, img11,img32, img15];
 
 /* ================= TYPEWRITER ================= */
 const Typewriter = () => {
@@ -74,7 +74,7 @@ const ourWorkImages = [
     id: 4,
     title: "Private Celebration",
     category: "Private Parties",
-    image: img12,
+    image: img13,
   },
   { id: 5, title: "Brand Launch", category: "Corporate Events", image: img25 },
   { id: 6, title: "Beach Wedding", category: "Weddings", image: img9 },
@@ -96,12 +96,12 @@ const categoryImages = [
     image: img11,
   },
   { id: 9, title: "Gala Dinner", category: "Corporate Events", image: img9 },
-  { id: 10, title: "Garden Wedding", category: "Weddings", image: img12 },
+  { id: 10, title: "Garden Wedding", category: "Weddings", image: img15 },
   {
     id: 11,
     title: "Cityscape Wedding",
     category: "Destination Events",
-    image: img14,
+    image: img38,
   },
   {
     id: 12,
