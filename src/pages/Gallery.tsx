@@ -13,7 +13,7 @@ import img15 from "@/assets/img15.jpg";
 import img24 from "@/assets/img24.jpg";
 import img25 from "@/assets/img25.jpg";
 import img32 from "@/assets/img32.jpg";
-import img37 from "@/assets/img37.jpg";
+import img37 from "@/assets/img39.jpg";
 import img38 from "@/assets/img38.jpg";
 import img8 from "@/assets/img8.jpg";
 import img9 from "@/assets/img9.jpg";

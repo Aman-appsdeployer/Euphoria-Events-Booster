@@ -1,7 +1,7 @@
 import galleryHero1 from "@/assets/img21.jpg";
 import galleryHero2 from "@/assets/img22.jpg";
 import galleryHero3 from "@/assets/img23.jpg";
-import gallerHero4 from "@/assets/img37.jpg";
+import gallerHero4 from "@/assets/img39.jpg";
 
 import { useToast } from "@/hooks/use-toast";
 import { AnimatePresence, motion } from "framer-motion";
