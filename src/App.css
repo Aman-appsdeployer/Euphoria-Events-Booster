@@ -1,0 +1,43 @@
+/* =========================================
+   APP BASE — CLEAN + TAILWIND FRIENDLY
+   (Replaces Vite starter CSS)
+========================================= */
+
+/* Root container — allow full-width layouts */
+#root {
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Reset default anchor behavior (optional) */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Image defaults */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Optional reusable card helper */
+.card {
+  @apply p-6 rounded-xl bg-card border border-border shadow-sm;
+}
+
+/* Optional muted text helper */
+.read-the-docs {
+  @apply text-muted-foreground text-sm;
+}
+
+/* Utility: smooth media rendering */
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
