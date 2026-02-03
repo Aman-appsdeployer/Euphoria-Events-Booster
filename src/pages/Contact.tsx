@@ -420,10 +420,10 @@ const Contact = () => {
                   <div>
                     <p className="text-sm text-muted-foreground">Call Us</p>
                     <a
-                      href="tel:+91XXXXXXXXXX"
+                      href="tel:+919477777471"
                       className="text-lg font-semibold hover:text-primary"
                     >
-                      +91 XXXXXXXXXX
+                      +91 9477777471
                     </a>
                   </div>
                 </div>

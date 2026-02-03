@@ -41,7 +41,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Euphoria Events"
-              className="h-20  md:h-20 w-24 object-contain"
+              className="h-20  md:h-20 lg:h-28 w-28 object-contain"
             />
           </NavLink>
 

@@ -54,7 +54,7 @@ const Footer = () => {
             <img
               src={logo}
               alt="Euphoria Events Booster"
-              className="h-24 w-auto object-contain"
+              className="h-24  lg:h-36  w-auto object-contain"
             />
 
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
@@ -148,10 +148,10 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-primary mt-0.5" />
                 <a
-                  href="tel:+91XXXXXXXXXX"
+                  href="tel:+919477777471"
                   className="hover:text-primary transition-colors"
                 >
-                  +91 XXXXXXXXXX
+                  +91 9477777471
                 </a>
               </li>
 

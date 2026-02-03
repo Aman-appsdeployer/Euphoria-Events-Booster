@@ -3,7 +3,6 @@ import { componentTagger } from "lovable-tagger";
 import path from "path";
 import { defineConfig } from "vite";
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
@@ -24,6 +23,6 @@ export default defineConfig(({ mode }) => ({
     },
   },
 
-  // ✅ IMPORTANT: Tell Vite to treat JPG files as assets
   assetsInclude: ["**/*.jpg", "**/*.JPG"],
 }));
+ 

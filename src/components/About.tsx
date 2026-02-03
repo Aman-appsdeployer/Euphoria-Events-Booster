@@ -226,7 +226,7 @@ const About = () => {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://wa.me/91XXXXXXXXXX"
+                href="https://wa.me/919477777471"
                 className="btn-outline-gold text-center"
               >
                 WhatsApp Us

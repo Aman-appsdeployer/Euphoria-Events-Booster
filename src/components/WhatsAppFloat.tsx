@@ -23,7 +23,7 @@ const WhatsAppFloat = () => {
 
         {/* Button */}
         <motion.a
-          href="https://wa.me/91XXXXXXXXXX?text=Hello%20I%20would%20like%20to%20enquire%20about%20event%20planning"
+          href="https://wa.me/91947777471?text=Hello%20I%20would%20like%20to%20enquire%20about%20event%20planning"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat on WhatsApp"
