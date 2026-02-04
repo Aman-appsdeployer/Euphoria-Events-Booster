@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Outlet } from "react-router-dom";
 
@@ -7,10 +7,14 @@ const Layout = () => {
   return (
     <>
       <Navbar />
-      <Outlet />
+
+      <main className="min-h-screen">
+        <Outlet />
+      </main>
+
       <Footer />
 
-      {/* Floating WhatsApp Icon */}
+      {/* Floating Social Buttons */}
       <WhatsAppFloat />
     </>
   );
